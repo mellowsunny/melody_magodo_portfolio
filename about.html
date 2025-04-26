@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melody Magodo - Profil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-image: url('assets/imagex/katerina-may-HPu7CIKZXrA-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #facc15;
+        }
+
+        .about-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1e3a8a;
+        }
+
+        .avatar-floating {
+            width: 100px;
+            height: 100px;
+            border: 4px solid #3b82f6;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            cursor: pointer;
+        }
+
+        .avatar-floating img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .education-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            color: #333;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: glow 2s infinite alternate;
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+        }
+
+        .education-card h3 {
+            color: #1e3a8a;
+        }
+
+        .education-card ul {
+            text-align: left;
+            margin-top: 1rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .education-card ul li::before {
+            content: "➤ ";
+            color: #3b82f6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            color: #333;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #3b82f6;
+        }
+
+        .skill-card h3 {
+            color: #1e3a8a;
+        }
+
+        .experience {
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .experience::before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #3b82f6;
+            border-radius: 2px;
+        }
+
+        .exp-item {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            margin-left: 50px;
+            animation: glow 2s infinite alternate;
+        }
+
+        .exp-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+        }
+
+        .exp-item h3 {
+            color: #1e3a8a;
+        }
+
+        .exp-item p {
+            font-style: italic;
+            color: #4b5563;
+        }
+
+        .exp-item ul {
+            margin-top: 1rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .exp-item ul li::before {
+            content: "✔ ";
+            color: #3b82f6;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0 2rem 0;
+        }
+
+        .btn-download, .btn-linkedin {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            margin: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+            color: #fff;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+        }
+
+        .btn-download:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-linkedin {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+        }
+
+        .btn-linkedin:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+        }
+
+        .quote-section {
+            text-align: center;
+            margin: 4rem 2rem;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: #1e3a8a;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            padding: 1rem 2rem;
+            text-align: center;
+            color: #fff;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #fff;
+            margin-left: 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #facc15;
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+
+        #scrollToTopBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin: 0 1rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="about.html">Profil</a>
+        <a href="projects.html">Projets</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <section class="about-section">
+        <div class="avatar-floating" onclick="playGreeting()">
+            <img src="assets/imagex/Melody-250.jpg" alt="Avatar Melody">
+        </div>
+        <h2 class="section-title" data-aos="fade-up">🎓 Formation Académique</h2>
+
+        <div class="education-grid">
+            <div class="education-card" data-aos="fade-up">
+                <h3>Master MIASHS</h3>
+                <p>Université Grenoble Alpes (2023 - 2025)</p>
+                <ul>
+                    <li>Algorithmique et Structures de Données</li>
+                    <li>Programmation web côté serveur/client</li>
+                    <li>Programmation Java</li>
+                    <li>Systèmes et Réseaux Informatiques</li>
+                    <li>PowerBI et Informatique Décisionnelle</li>
+                    <li>Bases de données (SQL)</li>
+                    <li>Recherche d'Information</li>
+                    <li>Génie Logiciel et Gestion de Projet</li>
+                    <li>Unix/Linux et Systèmes d'Exploitation</li>
+                    <li>Interaction Homme-Machine</li>
+                </ul>
+            </div>
+
+            <div class="education-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Master Sciences de la Vie</h3>
+                <p>Université Ferhat Abbas (2020 - 2022)</p>
+                <ul>
+                    <li>Informatique appliquée aux sciences</li>
+                    <li>Mathématiques pour l'analyse</li>
+                    <li>Base de Données</li>
+                    <li>Bioinformatique</li>
+                    <li>Analyse de Données Biologiques</li>
+                    <li>Techniques Statistiques</li>
+                </ul>
+            </div>
+
+            <div class="education-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Licence Sciences de la Vie (Biochimie)</h3>
+                <p>Université Ferhat Abbas (2017 - 2020)</p>
+                <ul>
+                    <li>Mathématiques, Informatique et Statistiques</li>
+                    <li>Biostatistique</li>
+                    <li>Analyse de Données Biologiques</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title" data-aos="fade-up">🛠️ Compétences Techniques</h2>
+
+        <div class="skills-grid">
+            <div class="skill-card" data-aos="zoom-in"><i class="fab fa-java"></i><h3>Java</h3></div>
+            <div class="skill-card" data-aos="zoom-in"><i class="fab fa-html5"></i><h3>HTML / CSS</h3></div>
+            <div class="skill-card" data-aos="zoom-in"><i class="fab fa-js"></i><h3>JavaScript</h3></div>
+            <div class="skill-card" data-aos="zoom-in"><i class="fab fa-php"></i><h3>PHP</h3></div>
+            <div class="skill-card" data-aos="zoom-in"><i class="fab fa-python"></i><h3>Python</h3></div>
+            <div class="skill-card" data-aos="zoom-in"><i class="fab fa-react"></i><h3>React.js</h3></div>
+            <div class="skill-card" data-aos="zoom-in"><i class="fab fa-node-js"></i><h3>Node.js</h3></div>
+            <div class="skill-card" data-aos="zoom-in"><i class="fas fa-database"></i><h3>SQL / MongoDB</h3></div>
+            <div class="skill-card" data-aos="zoom-in"><i class="fas fa-chart-bar"></i><h3>PowerBI</h3></div>
+        </div>
+
+        <h2 class="section-title" data-aos="fade-up">💼 Expérience Professionnelle</h2>
+
+        <div class="experience">
+            <div class="exp-item" data-aos="fade-up">
+                <h3>Etudiante - Développement de Base de Données</h3>
+                <p>Université Grenoble Alpes · Mar. 2025 – Avr. 2025</p>
+                <ul>
+                    <li>Création d'une base de données pour une application de gestion de projets (méthode Merise).</li>
+                    <li>Définition des modèles de données, création des tables et gestion des contraintes dynamiques/statistiques.</li>
+                    <li>Ajout de données, tests SQL approfondis et gestion du projet avec Trello et GitHub.</li>
+                    <li>Participation active à toutes les étapes de conception, développement et mise en œuvre.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item" data-aos="fade-up">
+                <h3>Etudiante - Développement de Jeu Java</h3>
+                <p>Université Grenoble Alpes · Déc. 2024</p>
+                <ul>
+                    <li>Développement d'un jeu interactif "Bataille Navale" en Java avec interface graphique Swing.</li>
+                    <li>Implémentation de la logique des navires, tests unitaires et gestion multithread de la partie.</li>
+                    <li>Conception d'interfaces utilisateurs et participation à la rédaction de spécifications techniques.</li>
+                    <li>Suivi du projet sous méthodologie Agile et versioning Git.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item" data-aos="fade-up">
+                <h3>Etudiante - Développement Système de Messagerie</h3>
+                <p>Université Grenoble Alpes · Avr. 2024</p>
+                <ul>
+                    <li>Développement d'un système de messagerie instantanée avec Java Swing (messages textuels et fichiers).</li>
+                    <li>Conception d'interfaces utilisateur (connexion, chat privé, chat de groupe).</li>
+                    <li>Gestion de l'interface graphique, flux de communication et validation multi-utilisateur.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item" data-aos="fade-up">
+                <h3>Data Entry Clerk</h3>
+                <p>FACT Zimbabwe · Jan. 2023 – Fév. 2023</p>
+                <ul>
+                    <li>Nettoyage et structuration de grands ensembles de données via Excel et formules logiques.</li>
+                    <li>Validation, modélisation et normalisation de données clients pour intégration en bases de données.</li>
+                    <li>Implémentation de logique conditionnelle et correction des incohérences de données.</li>
+                    <li>Renforcement des compétences en debugging et en traitement de données structurées.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item" data-aos="fade-up">
+                <h3>Enseignante de Biologie</h3>
+                <p>Higher Achievers Academy · Fév. 2023 – Août 2023</p>
+                <ul>
+                    <li>Enseignement de la biologie et des sciences générales à des élèves du secondaire.</li>
+                    <li>Animation de projets scientifiques et de sessions interactives.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item" data-aos="fade-up">
+                <h3>Stagiaire en Informatique & Bioinformatique</h3>
+                <p>Laboratoire Dr. Djaballah · Sep. 2022 – Oct. 2022</p>
+                <ul>
+                    <li>Participation à la gestion de bases de données médicales (SQL).</li>
+                    <li>Traitement et nettoyage de données biologiques avec outils informatiques.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item" data-aos="fade-up">
+                <h3>Stagiaire en Recherche Appliquée (Informatique)</h3>
+                <p>Laboratoire de Biochimie Appliquée · Fév. 2022 – Juil. 2022</p>
+                <ul>
+                    <li>Analyse de données expérimentales avec Excel, Prism et SQL.</li>
+                    <li>Utilisation de scripts Python pour le traitement de données biologiques complexes.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-section" data-aos="fade-up">
+            <a href="assets/Melody_Magodo_CV.pdf" download class="btn-download">📄 Télécharger Mon CV</a>
+            <a href="https://www.linkedin.com/in/melody-magodo/" target="_blank" class="btn-linkedin">🔗 Mon LinkedIn</a>
+        </div>
+
+        <div class="quote-section" data-aos="fade-up">
+            <blockquote>"L'apprentissage constant est la clé de l'innovation." – Melody Magodo</blockquote>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Melody Magodo. Tous droits réservés.</p>
+        <a href="https://www.linkedin.com/in/melody-magodo/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </footer>
+
+    <button onclick="scrollToTop()" id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+    <audio id="greetingAudio" src="assets/audio/bonjour.mp3.unknown"></audio>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        window.onscroll = function() {
+            const btn = document.getElementById('scrollToTopBtn');
+            btn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
+        };
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function playGreeting() {
+            document.getElementById('greetingAudio').play();
+        }
+    </script>
+</body>
+</html>

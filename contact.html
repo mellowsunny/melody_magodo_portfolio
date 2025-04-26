@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melody Magodo - Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-image: url('assets/imagex/telephone-4440525.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .parallax {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            z-index: -1;
+            animation: floatBackground 10s ease-in-out infinite;
+        }
+
+        @keyframes floatBackground {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #facc15;
+        }
+
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 20px;
+        }
+
+        .avatar-floating {
+            width: 100px;
+            height: 100px;
+            border: 4px solid #3b82f6;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            cursor: pointer;
+        }
+
+        .avatar-floating img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            width: 100%;
+            max-width: 550px;
+            position: relative;
+            text-align: center;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+        }
+
+        .contact-form h2 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #1e3a8a;
+            font-weight: 700;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+            outline: none;
+        }
+
+        .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        .contact-form button {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: #fff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contact-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+        }
+
+        .contact-form .reset-btn {
+            background: linear-gradient(135deg, #991b1b, #ef4444);
+        }
+
+        .contact-form .reset-btn:hover {
+            background: linear-gradient(135deg, #7f1d1d, #b91c1c);
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #3b82f6;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            position: relative;
+        }
+
+        .modal-content h3 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            color: #4b5563;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ef4444;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: #b91c1c;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #messageCounter {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 24px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #facc15;
+            transform: scale(1.3);
+        }
+
+        #emailMessage {
+            font-size: 14px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .contact-form {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 16px;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parallax"></div>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="about.html">Profil</a>
+        <a href="projects.html">Projets</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <section class="contact-section">
+        <div class="contact-form">
+            <div class="avatar-floating" onclick="playGreeting()">
+                <img src="assets/imagex/Melody-250.jpg" alt="Avatar Melody">
+            </div>
+            <h2>Contactez-moi</h2>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <input type="text" id="name" placeholder="Nom" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <p id="emailMessage"></p>
+                <textarea id="message" placeholder="Message" rows="5" required></textarea>
+                <button type="submit">
+                    <i class="fas fa-envelope"></i> Envoyer
+                </button>
+                <button type="button" class="reset-btn" onclick="document.getElementById('contactForm').reset(); document.getElementById('emailMessage').textContent=''">
+                    <i class="fas fa-undo"></i> Réinitialiser
+                </button>
+                <div id="loading">Envoi en cours...</div>
+            </form>
+            <div id="messageCounter">Messages envoyés : <span id="counter">0</span></div>
+        </div>
+    </section>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">✑</button>
+            <h3>Message envoyé avec succès !</h3>
+            <p>Merci de m'avoir contacté. Je vous répondrai bientôt.</p>
+        </div>
+    </div>
+
+    <footer>
+        <h3>Coordonnées</h3>
+        <p><i class="fas fa-envelope"></i> melmagodo1997@gmail.com</p>
+        <p><i class="fas fa-phone"></i> 07 45 49 33 13</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/melodymagodo" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/melodymagodo" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/melodymagodo" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <audio id="greetingAudio" src="assets/audio/bonjour.mp3.unknown"></audio>
+
+    <script>
+        let messageCount = localStorage.getItem('messageCount') || 0;
+        document.getElementById('counter').textContent = messageCount;
+
+        document.getElementById("email").addEventListener("input", function() {
+            const email = document.getElementById("email").value;
+            const emailMessage = document.getElementById("emailMessage");
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+            if (emailPattern.test(email)) {
+                emailMessage.style.color = "green";
+                emailMessage.textContent = "Email valide !";
+            } else {
+                emailMessage.style.color = "red";
+                emailMessage.textContent = "Veuillez entrer un email valide.";
+            }
+        });
+
+        function submitForm(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            if (name && email && message) {
+                document.getElementById("loading").style.display = "block";
+
+                setTimeout(function() {
+                    document.getElementById("loading").style.display = "none";
+                    document.getElementById("contactForm").reset();
+                    document.getElementById("emailMessage").textContent = "";
+                    document.getElementById("successModal").style.display = "flex";
+
+                    messageCount++;
+                    localStorage.setItem('messageCount', messageCount);
+                    document.getElementById('counter').textContent = messageCount;
+
+                    setTimeout(closeModal, 5000);
+                }, 2000);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById("successModal").style.display = "none";
+        }
+
+        function playGreeting() {
+            document.getElementById('greetingAudio').play();
+        }
+    </script>
+</body>
+</html>

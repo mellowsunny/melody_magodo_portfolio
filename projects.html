@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melody Magodo - Projets</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <style>
+    /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('assets/imagex/project-management-5235092.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #333;
+    }
+
+    nav {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      padding: 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1.5rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #facc15;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      color: #1e3a8a;
+      margin-bottom: 1rem;
+    }
+
+    .hero-section p {
+      font-size: 1.3rem;
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-3px);
+    }
+
+    /* Filter Buttons */
+    .filter-group {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .filter-btn {
+      background: #3b82f6;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .filter-btn:hover {
+      background: #1d4ed8;
+      transform: scale(1.05);
+    }
+
+    .filter-btn.active {
+      background: #1e3a8a;
+    }
+
+    /* Project Cards Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 450px;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.5);
+    }
+
+    .project-icon {
+      font-size: 3rem;
+      color: #3b82f6;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      color: #1e3a8a;
+      margin-bottom: 0.8rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .project-description {
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .tools {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tool-tag {
+      background: #3b82f6;
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+    }
+
+    .view-details {
+      margin-top: auto;
+      background: #3b82f6;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 30px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .view-details:hover {
+      background: #1d4ed8;
+      transform: scale(1.05);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      position: relative;
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #e11d48;
+    }
+    .modal-close:hover {
+      color: #9f1239;
+    }
+    
+
+    footer {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      text-align: center;
+      padding: 1rem;
+      color: white;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Accueil</a>
+  <a href="about.html">Profil</a>
+  <a href="projects.html">Projets</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<section class="hero-section">
+  <h1>Mes Projets Académiques</h1>
+  <p>Découvrez mes travaux en développement web, Java, et analyse de données.</p>
+  <a href="#projects" class="btn-primary">Voir les Projets</a>
+</section>
+
+<section id="projects">
+  <div class="filter-group">
+    <button class="filter-btn active" data-filter="all">Tous</button>
+    <button class="filter-btn" data-filter="web">Développement Web</button>
+    <button class="filter-btn" data-filter="java">Java</button>
+    <button class="filter-btn" data-filter="data">Analyse de Données</button>
+  </div>
+
+  <div class="projects-grid">
+    <!-- Example Project Card -->
+    <div class="card project web">
+      <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
+      <h3 class="project-title">Site Web Portfolio</h3>
+      <p class="project-description">Développement d’un site personnel avec HTML, CSS et JavaScript.</p>
+      <div class="tools">
+        <span class="tool-tag">HTML</span>
+        <span class="tool-tag">CSS</span>
+        <span class="tool-tag">JavaScript</span>
+      </div>
+      <div class="view-details" onclick="openModal('Site Web Portfolio', 'Un site responsive pour présenter mes compétences et projets personnels.')">Voir Détails</div>
+    </div>
+    <!-- Add more cards the same way -->
+    <!-- Example Cards Below (6 cards) -->
+
+    <div class="card project java">
+      <div class="project-icon"><i class="fas fa-anchor"></i></div>
+      <h3 class="project-title">Bataille Navale</h3>
+      <p class="project-description">Jeu Java "Bataille Navale" avec interface SWING.</p>
+      <div class="tools">
+        <span class="tool-tag">Java</span>
+        <span class="tool-tag">SWING</span>
+      </div>
+      <div class="view-details" onclick="openModal('Bataille Navale', 'Jeu interactif en Java où un joueur humain affronte une IA sur une grille navale.')">Voir Détails</div>
+    </div>
+
+    <div class="card project web">
+      <div class="project-icon"><i class="fas fa-utensils"></i></div>
+      <h3 class="project-title">Serveur de Recettes</h3>
+      <p class="project-description">Site de recettes avec Laravel et PHP.</p>
+      <div class="tools">
+        <span class="tool-tag">Laravel</span>
+        <span class="tool-tag">PHP</span>
+      </div>
+      <div class="view-details" onclick="openModal('Serveur de Recettes', 'Application Laravel permettant de gérer des recettes et rechercher facilement.')">Voir Détails</div>
+    </div>
+
+    <div class="card project data">
+      <div class="project-icon"><i class="fas fa-chart-bar"></i></div>
+      <h3 class="project-title">Dashboards PowerBI</h3>
+      <p class="project-description">Création de tableaux de bord interactifs.</p>
+      <div class="tools">
+        <span class="tool-tag">PowerBI</span>
+        <span class="tool-tag">Excel</span>
+      </div>
+      <div class="view-details" onclick="openModal('Dashboards PowerBI', 'Création de dashboards interactifs pour la visualisation de données complexes.')">Voir Détails</div>
+    </div>
+
+    <div class="card project java">
+      <div class="project-icon"><i class="fas fa-comments"></i></div>
+      <h3 class="project-title">Application Chat</h3>
+      <p class="project-description">Chat Java multi-utilisateurs avec SWING.</p>
+      <div class="tools">
+        <span class="tool-tag">Java</span>
+        <span class="tool-tag">Swing</span>
+      </div>
+      <div class="view-details" onclick="openModal('Application Group Chat', 'Messagerie instantanée Java utilisant Swing, sockets, et Derby.')">Voir Détails</div>
+    </div>
+
+    <div class="card project web">
+      <div class="project-icon"><i class="fas fa-book-open"></i></div>
+      <h3 class="project-title">Plateforme Apprentissage</h3>
+      <p class="project-description">Gestion des cours et utilisateurs SQL.</p>
+      <div class="tools">
+        <span class="tool-tag">SQL</span>
+        <span class="tool-tag">Vertabelo</span>
+      </div>
+      <div class="view-details" onclick="openModal('Plateforme d\'apprentissage', 'Plateforme de cours et utilisateurs avec SQL, Vertabelo, et DBeaver.')">Voir Détails</div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="projectModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    © 2025 Melody Magodo. Tous droits réservés.
+  </footer>
+  
+  <!-- Modal JS -->
+  <script>
+    function openModal(title, description) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDescription').innerText = description;
+      document.getElementById('projectModal').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('projectModal').style.display = 'none';
+    }
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>
